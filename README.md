@@ -22,7 +22,7 @@ Windows lock screen wallpaper for multimonitor setup
 - One wallpaper for all additional monitor
 - Individual wallpaper for each monitor
 - Wallpaper preview
-- Wallpaper only on additional monitors (feel free to request main monitor wallpaper feature)
+- Wallpaper only on additional monitors
 - Supported images formats: `bmp`, `gif`, `jpg`, `jpeg`, `png`, `tiff`
 - Small and tiny background system service to detect OS lock events
 - One image layout option available: `ImageLayout.Zoom` - _The image is enlarged within the control's client rectangle_ [source](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.imagelayout?view=windowsdesktop-9.0) (other options in plans)
@@ -43,6 +43,14 @@ Wallpaper windows is hidden from `Alt+Tab` hotkey and do not interact with click
 - Windows 7
 - WIndows 10
 - Windows 11
+
+### Used libraries
+
+- [.NET](https://dotnet.microsoft.com)
+- [FontAwesome 6](https://github.com/MartinTopfstedt/FontAwesome6)
+- [Json.NET](https://www.newtonsoft.com/json)
+- [Prism](https://github.com/PrismLibrary/Prism)
+- [WindowsDisplayAPI](https://github.com/falahati/WindowsDisplayAPI)
 
 ### Development
 
@@ -71,10 +79,10 @@ Wallpaper windows is hidden from `Alt+Tab` hotkey and do not interact with click
 - Одна картинка для всех мониторов
 - Своя картинка для каждого монитора
 - Прдварительный просмотр обоев
-- Обои доступны только для дополнительных мониторов (если нужны обои на основном мониторе - пишите запрос на гитхабе)
+- Обои доступны только для дополнительных мониторов
 - Поддреживаемые форматы изображений: `bmp`, `gif`, `jpg`, `jpeg`, `png`, `tiff`
 - Маленький и легкий фоновый системный сервис для обнаружения блокировки экрана и экрана входа в систему
-- Доступна одна опция размещения изображения в окне: `ImageLayout.Zoom` - _The image is enlarged within the control's client rectangle_ [source](https://learn.microsoft.com/ru-ru/dotnet/api/system.windows.forms.imagelayout?view=windowsdesktop-9.0) (остальные опции в планах)
+- Доступна одна опция размещения изображения в окне: `ImageLayout.Zoom` - _Изображение увеличивается в пределах клиентского прямоугольника элемента управления_ [source](https://learn.microsoft.com/ru-ru/dotnet/api/system.windows.forms.imagelayout?view=windowsdesktop-9.0) (остальные опции в планах)
 
 ### Как это работает?
 
@@ -92,6 +100,14 @@ Wallpaper windows is hidden from `Alt+Tab` hotkey and do not interact with click
 - Windows 7
 - WIndows 10
 - Windows 11
+
+### Используемые библиотеки
+
+- [.NET](https://dotnet.microsoft.com)
+- [FontAwesome 6](https://github.com/MartinTopfstedt/FontAwesome6)
+- [Json.NET](https://www.newtonsoft.com/json)
+- [Prism](https://github.com/PrismLibrary/Prism)
+- [WindowsDisplayAPI](https://github.com/falahati/WindowsDisplayAPI)
 
 ### Разработка
 
