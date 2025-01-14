@@ -1,8 +1,8 @@
 # Lock Screen
 
-Windows lockscreen wallpaper application for multimonitor setup.
+Windows lock screen wallpaper for multimonitor setup
 
-Приложение для добавления обоев на дополнительные мониторы на экране блокировки.
+Приложение для добавления обоев на дополнительные мониторы на экране блокировки
 
 ## English
 
@@ -94,8 +94,6 @@ Wallpaper windows is hidden from `Alt+Tab` hotkey and do not interact with click
 - Windows 11
 
 ### Разработка
-
-### Development
 
 - Windows 10
 - Visual Studio 2022
