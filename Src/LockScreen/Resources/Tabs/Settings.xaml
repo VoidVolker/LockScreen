@@ -1,0 +1,185 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:LockScreen.Views.Controls"
+    xmlns:Converters="clr-namespace:LockScreen.DataTypes.Converters"
+    xmlns:Enums="clr-namespace:LockScreen.DataTypes.Enums"
+    xmlns:Tabs="clr-namespace:LockScreen.Views.Tabs"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors">
+    <Style TargetType="{x:Type Tabs:Settings}">
+        <Style.Resources>
+            <Converters:BoolToYesNoConverter x:Key="BoolToYesNo" />
+            <Converters:ObjectToVisiblityConverter x:Key="ObjectToVisiblity" />
+            <Converters:CollectionHeightConverter x:Key="CollectionHeight" />
+            <Converters:CollectionWidthConverter x:Key="CollectionWidth" />
+        </Style.Resources>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    x:Name="Root"
+                    TargetType="{x:Type Tabs:Settings}">
+                    <Grid
+                        x:Name="Content"
+                        Grid.Row="0"
+                        VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!--  Logon service  -->
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="2"
+                            Padding="5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Text="{DynamicResource I18n Settings Service status}" />
+                        <!--  Service status  -->
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="2"
+                            Padding="5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Text="{Binding LogonServiceState.Text,
+                                           Mode=OneWay,
+                                           UpdateSourceTrigger=PropertyChanged}" />
+                        <!--  Service control  -->
+                        <Controls:ButtonEx
+                            x:Name="ServiceManage"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Margin="2"
+                            Padding="10,5"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Command="{Binding ServiceManage.Command}"
+                            Content="{Binding ServiceManageContent.Text,
+                                              Mode=OneWay,
+                                              UpdateSourceTrigger=PropertyChanged}"
+                            IsEnabled="{Binding ServiceManageEnabled,
+                                                Mode=OneWay,
+                                                UpdateSourceTrigger=PropertyChanged}" />
+                        <!--  Service install/uninstall  -->
+                        <Controls:ButtonEx
+                            x:Name="ServiceInstall"
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            Margin="2,2,4,2"
+                            Padding="10,5"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Command="{Binding ServiceInstall.Command}"
+                            Content="{DynamicResource I18n Settings Service uninstall button}"
+                            IsEnabled="{Binding ServiceInstallEnabled,
+                                                Mode=OneWay,
+                                                UpdateSourceTrigger=PropertyChanged}" />
+
+                        <!--  Language  -->
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="2"
+                            Padding="5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Text="{DynamicResource I18n Settings Language}" />
+                        <!--  Language select  -->
+                        <Controls:ComboBoxEx
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3"
+                            Margin="2,2,4,2"
+                            Padding="10,5"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            ItemsSource="{Binding AppVM.LangVM.Languages,
+                                                  Mode=OneWay,
+                                                  UpdateSourceTrigger=PropertyChanged}"
+                            SelectedItem="{Binding AppVM.LangVM.Language,
+                                                   Mode=TwoWay,
+                                                   UpdateSourceTrigger=PropertyChanged}" />
+
+                        <!--  Workdir  -->
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Margin="2"
+                            Padding="5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Text="{DynamicResource I18n Settings Workdir}" />
+                        <!--  Workdir location  -->
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            Margin="2"
+                            Padding="5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Text="{Binding SettingsFileLocation,
+                                           Mode=OneWay}" />
+                        <!--  Workdir location open  -->
+                        <Controls:ButtonEx
+                            Grid.Row="2"
+                            Grid.Column="3"
+                            Margin="2,2,4,2"
+                            Padding="10,5"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Command="{Binding OpenSettingsDir.Command}"
+                            Content="{DynamicResource I18n Settings Workdir open button}" />
+                    </Grid>
+
+                    <!--  Triggers  -->
+                    <ControlTemplate.Triggers>
+                        <DataTrigger
+                            Binding="{Binding LogonServiceState}"
+                            Value="{x:Static Enums:ServiceState.NotInstalled}">
+                            <Setter
+                                TargetName="ServiceInstall"
+                                Property="Content"
+                                Value="{DynamicResource I18n Settings Service install button}" />
+                            <Setter
+                                TargetName="ServiceManage"
+                                Property="Visibility"
+                                Value="Collapsed" />
+                        </DataTrigger>
+
+                        <DataTrigger
+                            Binding="{Binding LogonServiceState}"
+                            Value="{x:Static Enums:ServiceState.NotFound}">
+                            <Setter
+                                TargetName="ServiceInstall"
+                                Property="Content"
+                                Value="{DynamicResource I18n Settings Service install button}" />
+                            <Setter
+                                TargetName="ServiceInstall"
+                                Property="IsEnabled"
+                                Value="False" />
+                            <Setter
+                                TargetName="ServiceManage"
+                                Property="Visibility"
+                                Value="Collapsed" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

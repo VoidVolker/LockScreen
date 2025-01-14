@@ -1,0 +1,99 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Constrols="clr-namespace:LockScreen.Views.Controls"
+    xmlns:Frames="clr-namespace:LockScreen.Views.Frames"
+    xmlns:Tools="clr-namespace:LockScreen.Tools"
+    xmlns:fa="http://schemas.fontawesome.com/icons/svg">
+    <Style TargetType="{x:Type Frames:AppHeader}">
+        <Style.Resources />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    x:Name="Root"
+                    TargetType="{x:Type Frames:AppHeader}">
+                    <Grid
+                        x:Name="AppHeader"
+                        Margin="1"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Padding="10,5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Text="{x:Static Tools:Info.AppTitle}"
+                            TextAlignment="Center" />
+
+                        <Constrols:IconButton
+                            x:Name="Minimize"
+                            Grid.Column="1"
+                            Width="{Binding ElementName=AppHeader,
+                                            Path=ActualHeight}"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="White"
+                            BorderThickness="0"
+                            Command="{Binding Minimize.Command,
+                                              RelativeSource={RelativeSource AncestorType=Frames:AppHeader}}"
+                            Icon="Regular_WindowMinimize"
+                            IconSize="12"
+                            PrimaryColor="DimGray"
+                            SelectedPrimaryColor="White" />
+
+                        <!--<Constrols:IconButton
+                            x:Name="Restore"
+                            Grid.Column="2"
+                            Width="{Binding ElementName=AppHeader,
+                                            Path=ActualHeight}"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="White"
+                            BorderThickness="0"
+                            Icon="Regular_WindowRestore"
+                            IconSize="12"
+                            PrimaryColor="DimGray"
+                            SelectedPrimaryColor="White" />-->
+
+                        <Constrols:IconButton
+                            x:Name="Close"
+                            Grid.Column="3"
+                            Width="{Binding ElementName=AppHeader,
+                                            Path=ActualHeight}"
+                            VerticalAlignment="Stretch"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Background="White"
+                            BorderThickness="0"
+                            Command="{Binding Close.Command,
+                                              RelativeSource={RelativeSource AncestorType=Frames:AppHeader}}"
+                            HoverBackColor="OrangeRed"
+                            Icon="Solid_Xmark"
+                            IconSize="12"
+                            PrimaryColor="DimGray"
+                            SelectedBackColor="Red"
+                            SelectedPrimaryColor="White" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger
+                            SourceName="Close"
+                            Property="IsMouseOver"
+                            Value="True">
+                            <Setter
+                                Property="Background"
+                                Value="OrangeRed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

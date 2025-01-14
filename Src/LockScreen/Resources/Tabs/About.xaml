@@ -1,0 +1,165 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:LockScreen.Views.Controls"
+    xmlns:Tabs="clr-namespace:LockScreen.Views.Tabs"
+    xmlns:Tools="clr-namespace:LockScreen.Tools">
+    <Style TargetType="{x:Type Tabs:About}">
+        <Style.Resources />
+        <Setter
+            Property="MinHeight"
+            Value="162" />
+        <Setter
+            Property="MinWidth"
+            Value="324" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    x:Name="Root"
+                    TargetType="{x:Type Tabs:About}">
+                    <Grid
+                        x:Name="Content"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            Grid.Row="0"
+                            Padding="10,5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="{DynamicResource Lato Black}"
+                            FontSize="20"
+                            Text="{x:Static Tools:Info.AppTitle}"
+                            TextAlignment="Center" />
+
+                        <TextBlock
+                            Grid.Row="1"
+                            Padding="10,5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TextAlignment="Center">
+                            <Run Text="{DynamicResource I18n About App version}" />
+                            <Run Text=" " />
+                            <Run Text="{x:Static Tools:Info.AppVersion}" />
+                            <LineBreak />
+
+                            <Run Text="{DynamicResource I18n About App CPU architecture}" />
+                            <Run Text=" " />
+                            <Run Text="{x:Static Tools:Info.CPUArchitectureString}" />
+                            <LineBreak />
+
+                            <Run Text="{DynamicResource I18n About Developer}" />
+                            <Run Text=" " />
+                            <Run Text="{x:Static Tools:Info.AppCompany}" />
+                            <LineBreak />
+
+                            <Hyperlink NavigateUri="{x:Static Tools:Info.RepositoryUrl}">
+                                <TextBlock Text="{DynamicResource I18n About Homepage}" />
+                            </Hyperlink>
+                        </TextBlock>
+
+                        <TextBlock
+                            Grid.Row="2"
+                            Padding="10,5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="{DynamicResource Lato Black}"
+                            FontSize="20"
+                            Text="{DynamicResource I18n About License title}"
+                            TextAlignment="Center" />
+
+                        <TextBlock
+                            Grid.Row="3"
+                            Padding="10,5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            TextAlignment="Center">
+                            <Run Text="Copyright (c) " />
+                            <Run Text="{Binding Year, Mode=OneWay}" />
+                            <Run Text="" />
+                            <Run Text="{x:Static Tools:Info.AppCompany}" />
+                        </TextBlock>
+
+                        <Grid
+                            x:Name="TextPanel"
+                            Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                MaxWidth="{Binding ElementName=TextPanel,
+                                                   Path=ActualWidth}"
+                                Padding="10,5"
+                                Text="{DynamicResource I18n About License line 1}"
+                                TextAlignment="Justify"
+                                TextWrapping="Wrap" />
+
+                            <TextBlock
+                                Grid.Row="1"
+                                MaxWidth="{Binding ElementName=TextPanel,
+                                                   Path=ActualWidth}"
+                                Padding="10,5"
+                                Text="{DynamicResource I18n About License line 2}"
+                                TextAlignment="Justify"
+                                TextWrapping="Wrap" />
+
+                            <TextBlock
+                                Grid.Row="2"
+                                MaxWidth="{Binding ElementName=TextPanel,
+                                                   Path=ActualWidth}"
+                                Padding="10,5"
+                                Text="{DynamicResource I18n About License line 3}"
+                                TextAlignment="Justify"
+                                TextWrapping="Wrap" />
+
+                            <!--  Libraries licenses and links  -->
+                            <TextBlock
+                                Grid.Row="3"
+                                MaxWidth="{Binding ElementName=TextPanel,
+                                                   Path=ActualWidth}"
+                                Padding="10,5"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="{DynamicResource Lato Black}"
+                                FontSize="20"
+                                Text="{DynamicResource I18n About Libraries}"
+                                TextAlignment="Center" />
+
+                            <TextBlock
+                                Grid.Row="4"
+                                MaxWidth="{Binding ElementName=TextPanel,
+                                                   Path=ActualWidth}"
+                                Padding="10,5"
+                                TextAlignment="Center"
+                                TextWrapping="Wrap">
+                                <Hyperlink NavigateUri="https://dotnet.microsoft.com">.NET</Hyperlink><Run Text=", " />
+                                <Hyperlink NavigateUri="https://github.com/MartinTopfstedt/FontAwesome6">FontAwesome 6</Hyperlink><Run Text=", " />
+                                <Hyperlink NavigateUri="https://www.newtonsoft.com/json">Json.NET</Hyperlink><Run Text=", " />
+                                <Hyperlink NavigateUri="https://github.com/PrismLibrary/Prism">Prism</Hyperlink><Run Text=", " />
+                                <Hyperlink NavigateUri="https://github.com/falahati/WindowsDisplayAPI">WindowsDisplayAPI</Hyperlink>
+                            </TextBlock>
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,87 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0-windows7.0</TargetFramework>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <UseWindowsForms>true</UseWindowsForms>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Title>Wallpaper</Title>
+        <Authors>VoidVolker</Authors>
+        <Company>VoidVolker</Company>
+        <Description>Creates wallpaper for all additional monitors on lock/logon screen</Description>
+        <Product>LockScreen</Product>
+        <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+        <Platforms>ARM32;ARM64;x64;x86</Platforms>
+        <AssemblyVersion>1.0.1.993</AssemblyVersion>
+        <FileVersion>1.0.1.993</FileVersion>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/VoidVolker/LockScreen</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/VoidVolker/LockScreen</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <ShouldCreateLogs>True</ShouldCreateLogs>
+        <AdvancedSettingsExpanded>True</AdvancedSettingsExpanded>
+        <UpdateAssemblyVersion>False</UpdateAssemblyVersion>
+        <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
+        <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
+        <UpdatePackageVersion>False</UpdatePackageVersion>
+        <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
+        <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM32'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_ARM32</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_ARM64</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_X64</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_X86</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM32'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_ARM32</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_ARM64</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_X64</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_X86</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <CoreCompileCache Include="$(DefineConstants)" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <ProjectReference Include="..\Lib\Lib.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="WallpaperForm.cs">
+        <SubType>Form</SubType>
+      </Compile>
+    </ItemGroup>
+
+</Project>

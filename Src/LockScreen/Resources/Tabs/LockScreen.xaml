@@ -1,0 +1,541 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:LockScreen.Views.Controls"
+    xmlns:Converters="clr-namespace:LockScreen.DataTypes.Converters"
+    xmlns:Enums="clr-namespace:Lib.DataTypes.Enums;assembly=Lib"
+    xmlns:Styles="clr-namespace:LockScreen.Styles"
+    xmlns:Tabs="clr-namespace:LockScreen.Views.Tabs"
+    xmlns:Tools="clr-namespace:LockScreen.Tools"
+    xmlns:Views="clr-namespace:LockScreen.Views"
+    xmlns:fa="http://schemas.fontawesome.com/icons/svg"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime">
+    <Style TargetType="{x:Type Tabs:LockScreen}">
+        <Style.Resources>
+            <Converters:BoolToYesNoConverter x:Key="BoolToYesNo" />
+            <Converters:ObjectToVisiblityConverter x:Key="ObjectToVisiblity" />
+
+            <!--  Screen list headers templates  -->
+            <ControlTemplate x:Key="HeaderScreenIndex">
+                <TextBlock
+                    x:Name="Text"
+                    Width="Auto"
+                    Margin="2"
+                    Padding="5"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontWeight="DemiBold"
+                    Text="{DynamicResource I18n Settings Screen number}"
+                    TextAlignment="Left" />
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="HeaderScreenName">
+                <TextBlock
+                    x:Name="Text"
+                    Width="Auto"
+                    Margin="2"
+                    Padding="5"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontWeight="DemiBold"
+                    Text="{DynamicResource I18n Settings Screen name}"
+                    TextAlignment="Left" />
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="HeaderScreenResolution">
+                <TextBlock
+                    x:Name="Text"
+                    Width="Auto"
+                    Margin="2"
+                    Padding="5"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontWeight="DemiBold"
+                    Text="{DynamicResource I18n Settings Screen resolution}"
+                    TextAlignment="Left" />
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="HeaderScreenPrimary">
+                <TextBlock
+                    x:Name="Text"
+                    Width="Auto"
+                    Margin="2"
+                    Padding="5"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontWeight="DemiBold"
+                    Text="{DynamicResource I18n Settings Screen primary}"
+                    TextAlignment="Left" />
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="HeaderScreenConnected">
+                <TextBlock
+                    x:Name="Text"
+                    Width="Auto"
+                    Margin="2"
+                    Padding="5"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontWeight="DemiBold"
+                    Text="{DynamicResource I18n Settings Screen connected}"
+                    TextAlignment="Left" />
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="HeaderScreenWallpaper">
+                <TextBlock
+                    x:Name="Text"
+                    Width="Auto"
+                    Margin="2"
+                    Padding="5"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontWeight="DemiBold"
+                    Text="{DynamicResource I18n Settings Screen wallpaper}"
+                    TextAlignment="Left" />
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="HeaderScreenControl">
+                <TextBlock
+                    x:Name="Text"
+                    Width="Auto"
+                    Margin="2"
+                    Padding="5"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    FontWeight="DemiBold"
+                    Text="{DynamicResource I18n Settings Screen operation}"
+                    TextAlignment="Left" />
+            </ControlTemplate>
+
+
+            <!--  Screen list columns templates  -->
+            <ControlTemplate x:Key="ScreenIndex">
+                <ContentControl
+                    Grid.Column="0"
+                    BorderThickness="0">
+                    <TextBlock
+                        x:Name="Text"
+                        Margin="2"
+                        Padding="5"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        Text="{Binding Screen.Index,
+                                       Mode=OneWay}"
+                        TextAlignment="Center"
+                        ToolTip="{Binding Screen.Id,
+                                          Mode=OneWay}" />
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction
+                                Command="{Binding Path=DataContext.ScreenDetect.Command,
+                                                  Mode=OneWay,
+                                                  RelativeSource={RelativeSource AncestorType={x:Type Tabs:LockScreen}}}"
+                                CommandParameter="{Binding}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ContentControl>
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="ScreenName">
+                <ContentControl
+                    Grid.Column="0"
+                    BorderThickness="0">
+                    <TextBlock
+                        x:Name="Text"
+                        Margin="2"
+                        Padding="5"
+                        VerticalAlignment="Center"
+                        Text="{Binding Screen.Name,
+                                       Mode=OneWay}"
+                        TextAlignment="Left"
+                        ToolTip="{Binding Screen.Id,
+                                          Mode=OneWay}" />
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction
+                                Command="{Binding Path=DataContext.ScreenDetect.Command,
+                                                  Mode=OneWay,
+                                                  RelativeSource={RelativeSource AncestorType={x:Type Tabs:LockScreen}}}"
+                                CommandParameter="{Binding}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ContentControl>
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="ScreenResolution">
+                <TextBlock
+                    x:Name="Text"
+                    Margin="2"
+                    Padding="5"
+                    VerticalAlignment="Center"
+                    TextAlignment="Left">
+                    <Run Text="{Binding Screen.Bounds.Size.Width, Mode=OneWay}" />
+                    <Run Text="x" />
+                    <Run Text="{Binding Screen.Bounds.Size.Height, Mode=OneWay}" />
+                </TextBlock>
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="ScreenPrimary">
+                <TextBlock
+                    x:Name="Text"
+                    Margin="2"
+                    Padding="5"
+                    VerticalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding Screen.IsPrimary}"
+                                    Value="True">
+                                    <Setter
+                                        Property="Text"
+                                        Value="{DynamicResource I18n True}" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding Screen.IsPrimary}"
+                                    Value="False">
+                                    <Setter
+                                        Property="Text"
+                                        Value="{DynamicResource I18n False}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="ScreenConnected">
+                <TextBlock
+                    x:Name="Text"
+                    Margin="2"
+                    Padding="5"
+                    VerticalAlignment="Center">
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding Screen.IsConnected}"
+                                    Value="True">
+                                    <Setter
+                                        Property="Text"
+                                        Value="{DynamicResource I18n True}" />
+                                </DataTrigger>
+                                <DataTrigger
+                                    Binding="{Binding Screen.IsConnected}"
+                                    Value="False">
+                                    <Setter
+                                        Property="Text"
+                                        Value="{DynamicResource I18n False}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="ScreenWallpaper">
+                <Grid
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!--  Wallpaper not available label  -->
+                    <TextBlock
+                        Grid.Column="0"
+                        Margin="2"
+                        Padding="5"
+                        VerticalAlignment="Center"
+                        Text="{DynamicResource I18n Settings Screen not available}"
+                        Visibility="{Binding Screen.IsPrimary,
+                                             Mode=OneWay,
+                                             Converter={StaticResource ObjectToVisiblity}}" />
+
+                    <!--  File input  -->
+                    <Controls:FileInput
+                        x:Name="ScreenFileInput"
+                        Grid.Column="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        BrowseText="{DynamicResource I18n Browse button}"
+                        Command="{Binding DataContext.ScreenWallpaperSave.Command,
+                                          RelativeSource={RelativeSource AncestorType={x:Type Tabs:LockScreen}}}"
+                        CommandParameter="{Binding}"
+                        DialogTitle="{DynamicResource I18n Browse Title}"
+                        ExtList="{Binding DataContext.ExtList,
+                                          Mode=OneWay,
+                                          RelativeSource={RelativeSource AncestorType={x:Type Tabs:LockScreen}}}"
+                        ExtListTitle="{DynamicResource I18n Browse Ext title}"
+                        File="{Binding Screen.Wallpaper,
+                                       Mode=TwoWay,
+                                       UpdateSourceTrigger=PropertyChanged}"
+                        Visibility="{Binding Screen.IsSecondary,
+                                             Mode=OneWay,
+                                             Converter={StaticResource ObjectToVisiblity}}" />
+                </Grid>
+            </ControlTemplate>
+
+            <ControlTemplate x:Key="ScreenControl">
+                <Grid
+                    Width="Auto"
+                    Margin="2"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!--  Preview control  -->
+                    <Controls:ButtonEx
+                        Grid.Column="0"
+                        Padding="10,5"
+                        HorizontalContentAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Command="{Binding DataContext.ScreenPreviewSwitch.Command,
+                                          RelativeSource={RelativeSource AncestorType={x:Type Tabs:LockScreen}}}"
+                        CommandParameter="{Binding}"
+                        Content="{Binding PreviewOperation.Text}"
+                        Visibility="{Binding Screen.IsSecondary,
+                                             Mode=OneWay,
+                                             Converter={StaticResource ObjectToVisiblity}}" />
+
+                    <!--  Delete button  Padding="10,5,10,5"  -->
+                    <Controls:ButtonEx
+                        Grid.Column="1"
+                        Margin="4,0,0,0"
+                        Padding="10,5,10,5"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Center"
+                        Command="{Binding DataContext.ScreenDelete.Command,
+                                          RelativeSource={RelativeSource AncestorType={x:Type Tabs:LockScreen}}}"
+                        CommandParameter="{Binding}"
+                        Content="{DynamicResource I18n Settings Delete button}"
+                        Visibility="{Binding Screen.IsDiconnected,
+                                             Mode=OneWay,
+                                             Converter={StaticResource ObjectToVisiblity}}" />
+                </Grid>
+            </ControlTemplate>
+        </Style.Resources>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    x:Name="Root"
+                    TargetType="{x:Type Tabs:LockScreen}">
+                    <Grid x:Name="Content">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!--  Screens counter  -->
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="2"
+                            Padding="5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Text="{DynamicResource I18n Settings Founded screens}"
+                            TextAlignment="Left" />
+                        <TextBlock
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="2"
+                            Padding="5"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Text="{Binding ScreensCount,
+                                           Mode=OneWay}"
+                            TextAlignment="Left" />
+                        <Controls:ButtonEx
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Margin="2,2,4,2"
+                            Padding="10,5"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Command="{Binding ScreensUpdate.Command}"
+                            Content="{DynamicResource I18n Settings Update button}" />
+
+                        <!--  Wallpaper mode  -->
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="2"
+                            Padding="5"
+                            Text="{DynamicResource I18n Settings Wallpaper mode}" />
+                        <Controls:ComboBoxEx
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            Margin="2,2,4,2"
+                            Padding="10,5,10,5"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            DisplayMemberPath="Text"
+                            ItemsSource="{Binding WallpaperModes,
+                                                  Mode=OneWay,
+                                                  UpdateSourceTrigger=PropertyChanged}"
+                            SelectedItem="{Binding WallpaperMode,
+                                                   Mode=TwoWay,
+                                                   UpdateSourceTrigger=PropertyChanged}" />
+
+                        <!--  One wallpaper file  -->
+                        <TextBlock
+                            x:Name="WallpaperFileLabel"
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Margin="2"
+                            Padding="5"
+                            VerticalAlignment="Center"
+                            Text="{DynamicResource I18n Settings Wallpaper file}" />
+                        <Grid
+                            x:Name="WallpaperFileInput"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Controls:FileInput
+                                Grid.Column="0"
+                                VerticalAlignment="Center"
+                                BrowseText="{DynamicResource I18n Browse button}"
+                                DialogTitle="{DynamicResource I18n Browse Title}"
+                                ExtList="{Binding ExtList,
+                                                  Mode=OneWay}"
+                                ExtListTitle="{DynamicResource I18n Browse Ext title}"
+                                File="{Binding Wallpaper,
+                                               Mode=TwoWay,
+                                               UpdateSourceTrigger=PropertyChanged}" />
+                            <Controls:ButtonEx
+                                Grid.Column="1"
+                                Margin="2,2,4,2"
+                                Padding="10,5"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"
+                                Command="{Binding PreviewSwitch.Command}"
+                                Content="{Binding PreviewOperation.Text,
+                                                  Mode=OneWay}" />
+                        </Grid>
+
+                        <Controls:GridTable
+                            x:Name="ScreensList"
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="3"
+                            Width="Auto"
+                            Margin="2"
+                            HorizontalAlignment="Stretch"
+                            ColumnsHeaderEnabled="True"
+                            ItemsSource="{Binding Screens,
+                                                  Mode=OneWay,
+                                                  UpdateSourceTrigger=PropertyChanged}"
+                            Orientation="Horizontal">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Controls:GridTable.ColumnTemplates>
+                                <Controls:GridTableColumn
+                                    Width="Auto"
+                                    CellTemplate="{StaticResource ScreenIndex}"
+                                    HeaderTemplate="{StaticResource HeaderScreenIndex}" />
+
+                                <Controls:GridTableColumn
+                                    Width="Auto"
+                                    CellTemplate="{StaticResource ScreenName}"
+                                    HeaderTemplate="{StaticResource HeaderScreenName}" />
+
+                                <Controls:GridTableColumn
+                                    Width="Auto"
+                                    CellTemplate="{StaticResource ScreenResolution}"
+                                    HeaderTemplate="{StaticResource HeaderScreenResolution}" />
+
+                                <Controls:GridTableColumn
+                                    Width="Auto"
+                                    CellTemplate="{StaticResource ScreenPrimary}"
+                                    HeaderTemplate="{StaticResource HeaderScreenPrimary}" />
+
+                                <Controls:GridTableColumn
+                                    Width="Auto"
+                                    CellTemplate="{StaticResource ScreenConnected}"
+                                    HeaderTemplate="{StaticResource HeaderScreenConnected}" />
+
+                                <Controls:GridTableColumn
+                                    Width="*"
+                                    CellTemplate="{StaticResource ScreenWallpaper}"
+                                    HeaderTemplate="{StaticResource HeaderScreenWallpaper}" />
+
+                                <Controls:GridTableColumn
+                                    Width="Auto"
+                                    CellTemplate="{StaticResource ScreenControl}"
+                                    HeaderTemplate="{StaticResource HeaderScreenControl}" />
+                            </Controls:GridTable.ColumnTemplates>
+                        </Controls:GridTable>
+                    </Grid>
+
+                    <!--  Wallpaper mode switcher  -->
+                    <ControlTemplate.Triggers>
+                        <DataTrigger
+                            Binding="{Binding WallpaperMode,
+                                              Mode=OneWay}"
+                            Value="{x:Static Enums:WallpaperMode.Multiple}">
+                            <Setter
+                                TargetName="ScreensList"
+                                Property="Visibility"
+                                Value="Visible" />
+                            <Setter
+                                TargetName="WallpaperFileInput"
+                                Property="Visibility"
+                                Value="Collapsed" />
+                            <Setter
+                                TargetName="WallpaperFileLabel"
+                                Property="Visibility"
+                                Value="Collapsed" />
+                        </DataTrigger>
+
+                        <DataTrigger
+                            Binding="{Binding WallpaperMode,
+                                              Mode=OneWay}"
+                            Value="{x:Static Enums:WallpaperMode.One}">
+                            <Setter
+                                TargetName="ScreensList"
+                                Property="Visibility"
+                                Value="Collapsed" />
+                            <Setter
+                                TargetName="WallpaperFileInput"
+                                Property="Visibility"
+                                Value="Visible" />
+                            <Setter
+                                TargetName="WallpaperFileLabel"
+                                Property="Visibility"
+                                Value="Visible" />
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,163 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:I18n="clr-namespace:LockScreen.DataTypes.Collections.I18n"
+    xmlns:v="clr-namespace:System;assembly=mscorlib">
+
+    <!--  Tabs  -->
+    <v:String x:Key="I18n Tab Lock screen">Lock screen</v:String>
+    <v:String x:Key="I18n Tab Settings">Settings</v:String>
+    <v:String x:Key="I18n Tab About">About</v:String>
+
+    <!--  Screens  -->
+    <v:String x:Key="I18n Settings Wallpaper mode">Wallpaper mode:</v:String>
+    <v:String x:Key="I18n Settings Wallpaper file">Wallpaper:</v:String>
+    <v:String x:Key="I18n Settings Founded screens">Detected screens:</v:String>
+
+    <v:String x:Key="I18n Settings Screen number">#</v:String>
+    <v:String x:Key="I18n Settings Screen name">Name</v:String>
+    <v:String x:Key="I18n Settings Screen resolution">Resolution</v:String>
+    <v:String x:Key="I18n Settings Screen primary">Primary?</v:String>
+    <v:String x:Key="I18n Settings Screen connected">Connected?</v:String>
+    <v:String x:Key="I18n Settings Screen wallpaper">Wallpaper</v:String>
+    <v:String x:Key="I18n Settings Screen operation">Operation</v:String>
+
+    <v:String x:Key="I18n Settings Screen not available">Not available</v:String>
+
+    <!--  Screens - dialogs  -->
+    <v:String x:Key="I18n Settings Screen delete question">Are you sure want to delete screen?</v:String>
+    <v:String x:Key="I18n Settings Screen delete question title">Delete screen?</v:String>
+
+    <!--  Screens - buttons  -->
+    <v:String x:Key="I18n Settings Update button">Update</v:String>
+    <v:String x:Key="I18n Settings Delete button">Delete</v:String>
+
+    <x:Array
+        x:Key="{x:Static I18n:I18nPreviewOperation.ResourceKey}"
+        Type="{x:Type I18n:I18nPreviewOperation}">
+        <I18n:I18nPreviewOperation
+            Enum="True"
+            Text="Close" />
+        <I18n:I18nPreviewOperation
+            Enum="False"
+            Text="Preview" />
+    </x:Array>
+
+    <x:Array
+        x:Key="{x:Static I18n:I18nWallpaperMode.ResourceKey}"
+        Type="{x:Type I18n:I18nWallpaperMode}">
+        <I18n:I18nWallpaperMode
+            Enum="One"
+            Text="One for all screens" />
+        <I18n:I18nWallpaperMode
+            Enum="Multiple"
+            Text="Individual for each screen" />
+    </x:Array>
+
+    <!--  Settings  -->
+    <v:String x:Key="I18n Settings Service status">Service:</v:String>
+    <x:Array
+        x:Key="{x:Static I18n:I18nServiceState.ResourceKey}"
+        Type="{x:Type I18n:I18nServiceState}">
+        <I18n:I18nServiceState
+            Enum="NotInstalled"
+            Text="Not installed" />
+        <I18n:I18nServiceState
+            Enum="Stopped"
+            Text="Stopped" />
+        <I18n:I18nServiceState
+            Enum="StartPending"
+            Text="Start pending" />
+        <I18n:I18nServiceState
+            Enum="StopPending"
+            Text="Stop pending" />
+        <I18n:I18nServiceState
+            Enum="Running"
+            Text="Running" />
+        <I18n:I18nServiceState
+            Enum="ContinuePending"
+            Text="Continue pending" />
+        <I18n:I18nServiceState
+            Enum="PausePending"
+            Text="Pause pending" />
+        <I18n:I18nServiceState
+            Enum="Paused"
+            Text="Paused" />
+        <I18n:I18nServiceState
+            Enum="Installing"
+            Text="Installing" />
+        <I18n:I18nServiceState
+            Enum="Uninstalling"
+            Text="Uninstalling" />
+        <I18n:I18nServiceState
+            Enum="None"
+            Text="Not available" />
+        <I18n:I18nServiceState
+            Enum="NotFound"
+            Text="Not found" />
+    </x:Array>
+
+    <!--  Settings - buttons  -->
+    <x:Array
+        x:Key="{x:Static I18n:I18nServiceControl.ResourceKey}"
+        Type="{x:Type I18n:I18nServiceControl}">
+        <I18n:I18nServiceControl
+            Enum="Stopped"
+            Text="Start" />
+        <I18n:I18nServiceControl
+            Enum="Running"
+            Text="Stop" />
+        <I18n:I18nServiceControl
+            Enum="Paused"
+            Text="Start" />
+        <I18n:I18nServiceControl
+            Enum="None"
+            Text="Not available" />
+    </x:Array>
+    <v:String x:Key="I18n Settings Service install button">Install</v:String>
+    <v:String x:Key="I18n Settings Service uninstall button">Uninstall</v:String>
+
+    <v:String x:Key="I18n Settings Workdir open button">Open</v:String>
+
+    <v:String x:Key="I18n Settings Language">Language:</v:String>
+    <v:String x:Key="I18n Settings Workdir">Working directory:</v:String>
+    <v:String x:Key="I18n Settings Saved">Settings saved:</v:String>
+
+    <!--  Settings - service dialogs  -->
+    <v:String x:Key="I18n Service Are you sure caption">{0} service?</v:String>
+    <v:String x:Key="I18n Service Are you sure message">Are you sure want to {0} service?</v:String>
+
+    <!--  About  -->
+    <v:String x:Key="I18n About App version">Version:</v:String>
+    <v:String x:Key="I18n About App CPU architecture">Build for CPU:</v:String>
+    <v:String x:Key="I18n About Developer">Developer:</v:String>
+    <v:String x:Key="I18n About License title">MIT License</v:String>
+    <v:String x:Key="I18n About License copyright">Copyright</v:String>
+    <v:String x:Key="I18n About License line 1">Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</v:String>
+    <v:String x:Key="I18n About License line 2">The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies or substantial portions of the Software.</v:String>
+    <v:String x:Key="I18n About License line 3">THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</v:String>
+    <v:String x:Key="I18n About Libraries">Libraries used</v:String>
+    <v:String x:Key="I18n About Homepage">Homepage</v:String>
+
+    <!--  Dialogs  -->
+    <v:String x:Key="I18n Browse Ext title">Images</v:String>
+    <v:String x:Key="I18n Browse Title">Select wallpaper image file</v:String>
+    <!--  Dialogs - buttons  -->
+    <v:String x:Key="I18n Browse button">Browse</v:String>
+
+    <v:String x:Key="I18n True">Yes</v:String>
+    <v:String x:Key="I18n False">No</v:String>
+
+    <!--  Errors  -->
+    <v:String x:Key="I18n Wallpaper not found">Wallpaper file not found</v:String>
+    <v:String x:Key="I18n Settings save error">Settings file save error</v:String>
+    <v:String x:Key="I18n App core init error">Application core initialization error</v:String>
+    <v:String x:Key="I18n Error caption">Error</v:String>
+    <v:String x:Key="I18n Error unhandled">Unexpected application error</v:String>
+    <v:String x:Key="I18n Error Url open">Url opening error</v:String>
+
+    <!--  Exceptions  -->
+    <v:String x:Key="I18n Exception Element not found">Element not found of type &lt;{0}&gt; and name: "{1}"</v:String>
+    <v:String x:Key="I18n Exception Logon service not found">Service executable not found at path: {0}</v:String>
+    <v:String x:Key="I18n Exception Unknown response">Unknown service response: "{0}"</v:String>
+</ResourceDictionary>

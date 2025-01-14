@@ -1,0 +1,164 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:I18n="clr-namespace:LockScreen.DataTypes.Collections.I18n"
+    xmlns:v="clr-namespace:System;assembly=mscorlib">
+
+    <!--  Tabs  -->
+    <v:String x:Key="I18n Tab Lock screen">Экран входа</v:String>
+    <v:String x:Key="I18n Tab Settings">Настройки</v:String>
+    <v:String x:Key="I18n Tab About">О приложении</v:String>
+
+    <!--  Screens  -->
+    <v:String x:Key="I18n Settings Wallpaper mode">Режим обоев:</v:String>
+    <v:String x:Key="I18n Settings Wallpaper file">Файл:</v:String>
+    <v:String x:Key="I18n Settings Founded screens">Обнаружено мониторов:</v:String>
+
+    <v:String x:Key="I18n Settings Screen number">#</v:String>
+    <v:String x:Key="I18n Settings Screen name">Название</v:String>
+    <v:String x:Key="I18n Settings Screen resolution">Разрешение</v:String>
+    <v:String x:Key="I18n Settings Screen primary">Основной?</v:String>
+    <v:String x:Key="I18n Settings Screen connected">Подключён?</v:String>
+    <v:String x:Key="I18n Settings Screen wallpaper">Файл</v:String>
+    <v:String x:Key="I18n Settings Screen operation">Управление</v:String>
+
+    <v:String x:Key="I18n Settings Screen not available">Недоступно</v:String>
+
+    <!--  Screens - dialogs  -->
+    <v:String x:Key="I18n Settings Screen delete question">Вы точно уверены, что хотите удалить экран?</v:String>
+    <v:String x:Key="I18n Settings Screen delete question title">Удалить экран?</v:String>
+
+    <!--  Screens - buttons  -->
+    <v:String x:Key="I18n Settings Update button">Обновить</v:String>
+    <v:String x:Key="I18n Settings Delete button">Удалить</v:String>
+
+    <x:Array
+        x:Key="{x:Static I18n:I18nPreviewOperation.ResourceKey}"
+        Type="{x:Type I18n:I18nPreviewOperation}">
+        <I18n:I18nPreviewOperation
+            Enum="True"
+            Text="Закрыть" />
+        <I18n:I18nPreviewOperation
+            Enum="False"
+            Text="Просмотр" />
+    </x:Array>
+
+    <x:Array
+        x:Key="{x:Static I18n:I18nWallpaperMode.ResourceKey}"
+        Type="{x:Type I18n:I18nWallpaperMode}">
+        <I18n:I18nWallpaperMode
+            Enum="One"
+            Text="Для всех мониторов" />
+        <I18n:I18nWallpaperMode
+            Enum="Multiple"
+            Text="Отдельно для каждого монитора" />
+    </x:Array>
+
+    <!--  Settings  -->
+    <v:String x:Key="I18n Settings Service status">Статус сервиса:</v:String>
+    <x:Array
+        x:Key="{x:Static I18n:I18nServiceState.ResourceKey}"
+        Type="{x:Type I18n:I18nServiceState}">
+        <I18n:I18nServiceState
+            Enum="NotInstalled"
+            Text="Не установлен" />
+        <I18n:I18nServiceState
+            Enum="Stopped"
+            Text="Остановлен" />
+        <I18n:I18nServiceState
+            Enum="StartPending"
+            Text="Запускается" />
+        <I18n:I18nServiceState
+            Enum="StopPending"
+            Text="Останавливается" />
+        <I18n:I18nServiceState
+            Enum="Running"
+            Text="Запущен" />
+        <I18n:I18nServiceState
+            Enum="ContinuePending"
+            Text="Включается после приостановки на паузу" />
+        <I18n:I18nServiceState
+            Enum="PausePending"
+            Text="Приостанавливается на паузу" />
+        <I18n:I18nServiceState
+            Enum="Paused"
+            Text="На паузе" />
+        <I18n:I18nServiceState
+            Enum="Installing"
+            Text="Устанавливается" />
+        <I18n:I18nServiceState
+            Enum="Uninstalling"
+            Text="Удаляется" />
+        <I18n:I18nServiceState
+            Enum="None"
+            Text="Недоступно" />
+        <I18n:I18nServiceState
+            Enum="NotFound"
+            Text="Не найден" />
+    </x:Array>
+
+    <!--  Settings - buttons  -->
+    <x:Array
+        x:Key="{x:Static I18n:I18nServiceControl.ResourceKey}"
+        Type="{x:Type I18n:I18nServiceControl}">
+        <I18n:I18nServiceControl
+            Enum="Stopped"
+            Text="Запустить" />
+        <I18n:I18nServiceControl
+            Enum="Running"
+            Text="Остановить" />
+        <I18n:I18nServiceControl
+            Enum="Paused"
+            Text="Запустить" />
+        <I18n:I18nServiceControl
+            Enum="None"
+            Text="Недоступно" />
+    </x:Array>
+    <v:String x:Key="I18n Settings Service install button">Установить</v:String>
+    <v:String x:Key="I18n Settings Service uninstall button">Удалить</v:String>
+
+    <v:String x:Key="I18n Settings Workdir open button">Открыть</v:String>
+
+    <v:String x:Key="I18n Settings Language">Язык:</v:String>
+    <v:String x:Key="I18n Settings Workdir">Рабочий каталог:</v:String>
+    <v:String x:Key="I18n Settings Saved">Настройки сохранены:</v:String>
+
+    <!--  Settings - service dialogs  -->
+    <v:String x:Key="I18n Service Are you sure caption">{0} сервис?</v:String>
+    <v:String x:Key="I18n Service Are you sure message">Вы уверены, что хотите {0} сервис?</v:String>
+
+    <!--  About  -->
+    <v:String x:Key="I18n About App version">Версия:</v:String>
+    <v:String x:Key="I18n About App CPU architecture">Сборка для процессора:</v:String>
+    <v:String x:Key="I18n About Developer">Разработчик:</v:String>
+    <v:String x:Key="I18n About License title">Лицензия MIT</v:String>
+    <v:String x:Key="I18n About License line 1">Данная лицензия разрешает лицам, получившим копию данного программного обеспечения и сопутствующей документации (далее — Программное обеспечение), безвозмездно использовать Программное обеспечение без ограничений, включая неограниченное право на использование, копирование, изменение, слияние, публикацию, распространение, сублицензирование и/или продажу копий Программного обеспечения, а также лицам, которым предоставляется данное Программное обеспечение, при соблюдении следующих условий:</v:String>
+    <v:String x:Key="I18n About License line 2">Указанное выше уведомление об авторском праве и данные условия должны быть включены во все копии или значимые части данного Программного обеспечения.</v:String>
+    <v:String x:Key="I18n About License line 3">ДАННОЕ ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНО ВЫРАЖЕННЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ ГАРАНТИИ ТОВАРНОЙ ПРИГОДНОСТИ, СООТВЕТСТВИЯ ПО ЕГО КОНКРЕТНОМУ НАЗНАЧЕНИЮ И ОТСУТСТВИЯ НАРУШЕНИЙ, НО НЕ ОГРАНИЧИВАЯСЬ ИМИ. НИ В КАКОМ СЛУЧАЕ АВТОРЫ ИЛИ ПРАВООБЛАДАТЕЛИ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ПО КАКИМ-ЛИБО ИСКАМ, ЗА УЩЕРБ ИЛИ ПО ИНЫМ ТРЕБОВАНИЯМ, В ТОМ ЧИСЛЕ, ПРИ ДЕЙСТВИИ КОНТРАКТА, ДЕЛИКТЕ ИЛИ ИНОЙ СИТУАЦИИ, ВОЗНИКШИМ ИЗ-ЗА ИСПОЛЬЗОВАНИЯ ПРОГРАММНОГО ОБЕСПЕЧЕНИЯ ИЛИ ИНЫХ ДЕЙСТВИЙ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.</v:String>
+    <v:String x:Key="I18n About Libraries">Используемые библиотеки</v:String>
+    <v:String x:Key="I18n About Homepage">Домашная страница</v:String>
+
+    <!--  Dialogs  -->
+    <v:String x:Key="I18n Browse Ext title">Изображения</v:String>
+    <v:String x:Key="I18n Browse Title">Выберите файл изображения</v:String>
+
+    <!--  Dialogs - buttons  -->
+    <v:String x:Key="I18n Browse button">Обзор</v:String>
+
+    <v:String x:Key="I18n True">Да</v:String>
+    <v:String x:Key="I18n False">Нет</v:String>
+
+
+    <!--  Errors  -->
+    <v:String x:Key="I18n Wallpaper not found">Файл не найден</v:String>
+    <v:String x:Key="I18n Settings save error">Ошибка при сохранении файла найстроек</v:String>
+    <v:String x:Key="I18n App core init error">Ошибка запуска ядра приложения</v:String>
+    <v:String x:Key="I18n Error caption">Ошибка</v:String>
+    <v:String x:Key="I18n Error unhandled">Неожиданная ошибка приложения</v:String>
+    <v:String x:Key="I18n Error Url open">Ошибка открытия ссылки</v:String>
+
+    <!--  Exceptions  -->
+    <v:String x:Key="I18n Exception Element not found">Элемент не найден: &lt;{0}&gt; "{1}"</v:String>
+    <v:String x:Key="I18n Exception Logon service not found">Сервис не найден по пути: "{0}"</v:String>
+    <v:String x:Key="I18n Exception Unknown response">Неизвестный ответ от сервиса: "{0}"</v:String>
+</ResourceDictionary>

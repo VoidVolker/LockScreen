@@ -1,0 +1,38 @@
+﻿<Window
+    x:Class="LockScreen.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Tools="clr-namespace:LockScreen.Tools"
+    xmlns:VM="clr-namespace:LockScreen.VM"
+    xmlns:Views="clr-namespace:LockScreen.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LockScreen"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="{x:Static Tools:Info.AppTitle}"
+    Width="Auto"
+    Height="Auto"
+    MinWidth="750"
+    Padding="0"
+    d:DataContext="{d:DesignInstance Type=VM:AppVM}"
+    BorderBrush="DimGray"
+    BorderThickness="1"
+    FontFamily="{DynamicResource Lato}"
+    FontSize="12"
+    RenderOptions.ClearTypeHint="Auto"
+    ResizeMode="NoResize"
+    SizeToContent="WidthAndHeight"
+    SnapsToDevicePixels="True"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Views:App
+        x:Name="AppFrame"
+        Margin="0"
+        Padding="0">
+        <Views:App.DataContext>
+            <VM:AppVM />
+        </Views:App.DataContext>
+    </Views:App>
+</Window>

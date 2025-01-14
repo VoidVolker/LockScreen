@@ -1,0 +1,127 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:LockScreen.Views.Controls"
+    xmlns:Frames="clr-namespace:LockScreen.Views.Frames"
+    xmlns:Tabs="clr-namespace:LockScreen.Views.Tabs"
+    xmlns:Views="clr-namespace:LockScreen.Views"
+    xmlns:fa="http://schemas.fontawesome.com/icons/svg">
+    <Style TargetType="{x:Type Views:App}">
+        <Style.Resources />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    x:Name="Root"
+                    TargetType="{x:Type Views:App}">
+                    <Grid
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Controls:Tabs
+                            Grid.Row="0"
+                            Margin="0"
+                            HorizontalAlignment="Stretch">
+                            <Controls:Tabs.Buttons>
+                                <Controls:TabButton Padding="10,5">
+                                    <Controls:TextBlockEx
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Text="{DynamicResource I18n Tab Lock screen}"
+                                        TextAlignment="Center" />
+                                </Controls:TabButton>
+
+                                <Controls:TabButton Padding="10,5">
+                                    <Controls:TextBlockEx
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Text="{DynamicResource I18n Tab Settings}"
+                                        TextAlignment="Center" />
+                                </Controls:TabButton>
+
+                                <Controls:TabButton Padding="10,5">
+                                    <Controls:TextBlockEx
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Text="{DynamicResource I18n Tab About}"
+                                        TextAlignment="Center" />
+                                </Controls:TabButton>
+                            </Controls:Tabs.Buttons>
+
+                            <Controls:Tabs.Header>
+                                <Frames:AppHeader />
+                            </Controls:Tabs.Header>
+
+                            <Tabs:LockScreen
+                                Margin="0"
+                                DataContext="{Binding LockScreenVM}" />
+                            <Tabs:Settings
+                                Margin="0"
+                                DataContext="{Binding SettingsVM}" />
+                            <Tabs:About
+                                Margin="0"
+                                DataContext="{Binding AboutVM}" />
+                        </Controls:Tabs>
+
+                        <Separator
+                            Grid.Row="1"
+                            Height="0.7"
+                            Margin="0,2,0,2"
+                            Padding="0"
+                            Background="LightGray"
+                            SnapsToDevicePixels="True" />
+
+                        <!--  Status line  -->
+                        <Grid
+                            Grid.Row="2"
+                            Margin="0,0,0,1"
+                            HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <!--  Config saved date  -->
+                            <fa:SvgAwesome
+                                Grid.Column="0"
+                                Width="12"
+                                Height="12"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center"
+                                Icon="Regular_FloppyDisk"
+                                PrimaryColor="Gray" />
+                            <TextBlock
+                                x:Name="ConfigSaved"
+                                Grid.Column="1"
+                                Width="Auto"
+                                Margin="2"
+                                Padding="0,0,0,0"
+                                HorizontalAlignment="Stretch"
+                                Foreground="Gray"
+                                Text="{DynamicResource I18n Settings Saved}" />
+                            <TextBlock
+                                x:Name="ConfigSavedDate"
+                                Grid.Column="2"
+                                Width="Auto"
+                                Margin="2"
+                                Padding="0,0,5,0"
+                                HorizontalAlignment="Stretch"
+                                Foreground="Gray"
+                                Text="{Binding ConfigSaved,
+                                               StringFormat={}{0:HH:mm:ss}}" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

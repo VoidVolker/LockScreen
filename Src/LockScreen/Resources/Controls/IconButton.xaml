@@ -1,0 +1,88 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:LockScreen.Views.Controls"
+    xmlns:fa="http://schemas.fontawesome.com/icons/svg">
+    <Style TargetType="{x:Type Controls:IconButton}">
+        <Style.Resources />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate
+                    x:Name="Root"
+                    TargetType="{x:Type Controls:IconButton}">
+                    <Border
+                        x:Name="Back"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <fa:SvgAwesome
+                            x:Name="Icon"
+                            Width="{TemplateBinding IconSize}"
+                            Height="{TemplateBinding IconSize}"
+                            FlipOrientation="{TemplateBinding FlipOrientation}"
+                            Icon="{TemplateBinding Icon}"
+                            PrimaryColor="{TemplateBinding PrimaryColor}"
+                            PrimaryOpacity="{TemplateBinding PrimaryOpacity}"
+                            Rotation="{TemplateBinding Rotation}"
+                            SecondaryColor="{TemplateBinding SecondaryColor}"
+                            SecondaryOpacity="{TemplateBinding SecondaryOpacity}"
+                            SwapOpacity="{TemplateBinding SwapOpacity}" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger
+                            Property="IsMouseOver"
+                            Value="True">
+                            <!--<Setter
+                                TargetName="Back"
+                                Property="Background"
+                                Value="Red" />-->
+                            <Setter
+                                TargetName="Back"
+                                Property="Background"
+                                Value="{Binding HoverBackColor,
+                                                Mode=OneWay,
+                                                RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter
+                                TargetName="Icon"
+                                Property="PrimaryColor"
+                                Value="{Binding HoverPrimaryColor,
+                                                Mode=OneWay,
+                                                RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter
+                                TargetName="Icon"
+                                Property="SecondaryColor"
+                                Value="{Binding HoverSecondaryColor,
+                                                Mode=OneWay,
+                                                RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                        <Trigger
+                            Property="IsPressed"
+                            Value="True">
+                            <Setter
+                                TargetName="Back"
+                                Property="Background"
+                                Value="{Binding Path=SelectedBackColor,
+                                                Mode=OneWay,
+                                                RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter
+                                TargetName="Icon"
+                                Property="PrimaryColor"
+                                Value="{Binding Path=SelectedPrimaryColor,
+                                                Mode=OneWay,
+                                                RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter
+                                TargetName="Icon"
+                                Property="SecondaryColor"
+                                Value="{Binding Path=SelectedSecondaryColor,
+                                                Mode=OneWay,
+                                                RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

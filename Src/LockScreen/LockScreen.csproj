@@ -1,0 +1,96 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0-windows7.0</TargetFramework>
+        <Nullable>disable</Nullable>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <AssemblyVersion>1.0.1.993</AssemblyVersion>
+        <FileVersion>1.0.1.993</FileVersion>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Title>Lock Screen</Title>
+        <AssemblyTitle>Lock Screen</AssemblyTitle> <!-- Important -->
+        <Authors>VoidVolker</Authors>
+        <Company>VoidVolker</Company>
+        <Description>Creates wallpaper for all additional monitors on lock/logon screen</Description>
+        <Product>LockScreen</Product> <!-- No spaces, same in all projects for solution -->
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+        <Platforms>ARM32;ARM64;x64;x86</Platforms>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+        <PackageProjectUrl>https://github.com/VoidVolker/LockScreen</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/VoidVolker/LockScreen</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM32'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_ARM32</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_ARM64</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_X64</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_X86</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM32'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_ARM32</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_ARM64</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_X64</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+      <DebugType>full</DebugType>
+      <DefineConstants>$(DefineConstants);PLATFORM_X86</DefineConstants>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <CoreCompileCache Include="$(DefineConstants)" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="FontAwesome6.Svg" Version="2.5.1" />
+        <PackageReference Include="Prism.Wpf" Version="9.0.537" />
+        <PackageReference Include="System.ServiceProcess.ServiceController" Version="9.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="DataTypes\Structures\" />
+        <Folder Include="Extension\Attached\" />
+        <Folder Include="Models\Interfaces\" />
+        <Folder Include="Resources\Icons\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Lib\Lib.csproj" />
+        <ProjectReference Include="..\Wallpaper\Wallpaper.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Resource Include="Resources\Fonts\Lato-Black.ttf" />
+        <Resource Include="Resources\Fonts\Lato-Bold.ttf" />
+        <Resource Include="Resources\Fonts\Lato-Regular.ttf" />
+        <Resource Include="Resources\Fonts\Lato-Semibold.ttf" />
+    </ItemGroup>
+</Project>
