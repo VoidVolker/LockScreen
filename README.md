@@ -1,10 +1,10 @@
 # Lock Screen
 
-Windows lock screen wallpaper for multimonitor setup
+Windows lock screen wallpapers for multimonitor setup
+
+Обои для дополнительных мониторов на экране блокировки
 
 ![Lock screen](https://github.com/user-attachments/assets/a06ea2dd-11e6-496d-8521-421c52d3e4ba)
-
-Приложение для добавления обоев на дополнительные мониторы на экране блокировки
 
 ## English
 
